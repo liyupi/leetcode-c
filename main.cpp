@@ -10,24 +10,26 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> numMovesStones(int a, int b, int c) {
-        int nums[] = {a, b, c};
-        sort(nums, nums + 3);
-        vector<int> res;
-        int min = 0;
-        if (nums[0] < nums[1] - 1) {
-            min++;
+    static bool cmp(const vector<int> &a, const vector<int> &b) {
+        return a[0] - a[1] < b[0] - b[1];
+    }
+
+    /**
+     * 代价的差值越小越好
+     * @param costs
+     * @return
+     */
+    int twoCitySchedCost(vector<vector<int>>& costs) {
+        sort(costs.begin(), costs.end(), cmp);
+        int sum = 0;
+        int num = costs.size() / 2;
+        for (int i = 0; i < num; ++i) {
+            sum += costs[i][0];
         }
-        if (nums[2] > nums[1] + 1) {
-            min++;
+        for (int i = num; i < costs.size(); ++i) {
+            sum += costs[i][1];
         }
-        if (nums[2] - nums[1] == 2 || nums[1] - nums[0] == 2) {
-            min = 1;
-        }
-        int max = nums[2] - nums[0] - 2;
-        res.push_back(min);
-        res.push_back(max);
-        return res;
+        return sum;
     }
 };
 
