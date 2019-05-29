@@ -13,21 +13,23 @@ class Solution {
 public:
     bool canThreePartsEqualSum(vector<int> &A) {
         int size = A.size();
-        int leftSum[size];
-        leftSum[0] = A[0];
-        for (int i = 1; i < size; ++i) {
-            leftSum[i] = leftSum[i - 1] + A[i];
+        int sum = 0;
+        for (int i = 0; i < size; ++i) {
+            sum += A[i];
         }
-        if (leftSum[size - 1] % 3) {
+        if (sum % 3) {
             return false;
         }
-        int goal = leftSum[size - 1] / 3;
-        int left = -1, right = -1;
+        int goal = sum / 3;
+        int left = -1;
+        sum = 0;
         for (int i = 0; i < size - 1; ++i) {
-            if (left == -1 && leftSum[i] == goal) {
+            sum += A[i];
+            if (left == -1 && sum == goal) {
                 left = i;
+                sum = 0;
             }
-            if (left != -1 && leftSum[i] == 2 * goal) {
+            if (left != -1 && sum == goal) {
                 return true;
             }
         }
