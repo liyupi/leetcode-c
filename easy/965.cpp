@@ -36,6 +36,5 @@ public:
 
 int main() {
     Solution solution;
-    solution.removeDuplicates("abbaca");
     return 0;
 }
