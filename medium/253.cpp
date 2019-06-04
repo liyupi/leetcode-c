@@ -29,7 +29,7 @@ public:
         int res = 0;
         int i = 0, j = 0;
         int count = 0;
-        while(i < size && j < size) {
+        while (i < size && j < size) {
             if (starts[i] < ends[j]) {
                 count++;
                 res = max(res, count);
