@@ -22,6 +22,12 @@ public:
         return res;
     }
 
+    /**
+     * 利用start去重
+     * @param n
+     * @param start
+     * @param v
+     */
     void dfs(int n, int start, vector<int> &v) {
         int maxNum = sqrt(n);
         for (int i = start; i <= maxNum; ++i) {
