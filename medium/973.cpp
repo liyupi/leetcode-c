@@ -57,7 +57,9 @@ public:
 
 int main() {
     Solution solution;
-    vector<vector<int>> res = {{3,3},{5,-1},{-2,4}};
+    vector<vector<int>> res = {{3,  3},
+                               {5,  -1},
+                               {-2, 4}};
     solution.kClosest(res, 2);
     return 0;
 }
