@@ -19,17 +19,19 @@ public:
         bool visited[nums.size()];
         memset(visited, false, sizeof(visited));
         int res = 0;
+        int num = 0;
         for (int i = 0; i < nums.size(); ++i) {
             if (!visited[i]) {
                 int pos = i;
                 int count = 0;
                 while (!visited[pos]) {
                     visited[pos] = true;
+                    num++;
                     pos = nums[pos];
                     count++;
                 }
                 res = max(res, count);
-                if (res > nums.size() / 2) {
+                if (res > nums.size() - num) {
                     return res;
                 }
             }
